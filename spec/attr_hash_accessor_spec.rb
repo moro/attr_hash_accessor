@@ -33,4 +33,15 @@ describe AttrHashAccessor do
       expect { my_klass.new(nil) }.not_to raise_exception
     end
   end
+
+  describe 'filter attribute' do
+    let(:my_klass2) do
+      Class.new do
+        include AttrHashAccessor
+        attr_hash_reader :arr, &->(v) { v.presence || [1] }
+      end
+    end
+    subject(:object) { my_klass2.new(nil) }
+    its(:arr) { should == [1] }
+  end
 end

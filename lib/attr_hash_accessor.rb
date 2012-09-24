@@ -33,7 +33,7 @@ module AttrHashAccessor
       cols.each do |attr|
         define_method(attr) do
           val = @attributes[attr.to_s]
-          (val.present? && filter) ? filter.call(val) : val
+          filter ? filter.call(val) : val
         end
       end
     end
