@@ -13,7 +13,8 @@ module AttrHashAccessor
     base.extend ClassMethods
   end
 
-  def initialize(val = {})
+  def initialize(val = nil)
+    val = {} unless val.present?
     @attributes = self.class.default.stringify_keys.merge(val.stringify_keys)
   end
 
