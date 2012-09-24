@@ -32,6 +32,7 @@ obj = MyClass.new(foo: 'FOO', bar: 'BAR')
 obj.foo #=> 'FOO'
 
 obj.bar = 'BARBAR'
+obj.bar # => 'BARBAR'
 ```
 
 ### Getter with filter
