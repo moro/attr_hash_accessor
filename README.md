@@ -26,13 +26,18 @@ class MyClass
 
   attr_hash_writer :bar
   attr_hash_reader :foo, :bar
+  attr_hash_accessor :baz
 end
 
-obj = MyClass.new(foo: 'FOO', bar: 'BAR')
-obj.foo #=> 'FOO'
+obj = MyClass.new(foo: 'FOO', bar: 'BAR', baz: 'BAZ')
+obj.foo # => 'FOO'
 
 obj.bar = 'BARBAR'
 obj.bar # => 'BARBAR'
+
+obj.baz # => 'BAZ'
+obj.baz = 'BAZBAZ'
+obj.baz # => 'BAZBAZ'
 ```
 
 ### Getter with filter
@@ -41,15 +46,20 @@ obj.bar # => 'BARBAR'
 class MyClass
   include AttrHashAccessor
 
-  attr_hash_writer :vars
-  attr_hash_reader :vars, ->(val) { Array(val) }
+  attr_hash_writer :foo
+  attr_hash_reader :foo, &->(val) { Array(val) }
+  attr_hash_accessor :bar, &->(val) { val || {} }
 end
 
 obj = MyClass.new
-obj.vars # => []
+obj.foo # => []
+obj.bar  # => {}
 
-obj.vars = [1, 2, 3]
-obj.vars #=> [1, 2, 3]
+obj.foo = [1, 2, 3]
+obj.foo # => [1, 2, 3]
+
+obj.bar = {lorem: 'ipsum'}
+obj.bar # => {:lorem=>"ipsum"}
 ```
 
 ## Contributing
