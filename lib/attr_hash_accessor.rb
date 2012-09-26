@@ -38,6 +38,11 @@ module AttrHashAccessor
       end
     end
 
+    def attr_hash_accessor(*cols, &filter)
+      attr_hash_writer *cols
+      attr_hash_reader *cols, &filter
+    end
+
     def default
       {}
     end
