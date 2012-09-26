@@ -55,4 +55,24 @@ describe AttrHashAccessor do
     subject(:object) { my_klass2.new(nil) }
     its(:arr) { should == [1] }
   end
+
+  describe 'setting default' do
+    let(:my_klass) do
+      Class.new do
+        include AttrHashAccessor
+        attr_hash_accessor :bar
+
+        def self.default
+          {bar: 'BAZ'}
+        end
+      end
+    end
+    specify do
+      expect(my_klass.new.bar).to eq 'BAZ'
+    end
+
+    specify do
+      expect(my_klass.new(bar: 'val').bar).to eq 'val'
+    end
+  end
 end

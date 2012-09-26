@@ -62,6 +62,26 @@ obj.bar = {lorem: 'ipsum'}
 obj.bar # => {:lorem=>"ipsum"}
 ```
 
+### Define default
+
+```
+class MyClass
+  include AttrHashAccessor
+
+  attr_hash_reader :bar
+
+  def self.default
+    {bar: 'BAR'}
+  end
+end
+
+obj = MyClass.new
+obj.bar # => 'BAR'
+
+obj = MyClass.new(bar: 'baz')
+obj.bar # => 'baz'
+```
+
 ## Contributing
 
 1. Fork it
