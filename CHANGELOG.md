@@ -1,4 +1,4 @@
-## Git
+## 0.0.2 (Oct 04, 2012)
 
 * add `attr_hash_accessor`, defines both setter and getter *hibariya*
 
