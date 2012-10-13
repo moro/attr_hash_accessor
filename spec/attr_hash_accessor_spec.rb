@@ -75,4 +75,19 @@ describe AttrHashAccessor do
       expect(my_klass.new(bar: 'val').bar).to eq 'val'
     end
   end
+
+  describe '#attributes' do
+    let(:my_klass) do
+      Class.new do
+        include AttrHashAccessor
+        attr_hash_accessor :foo
+        attr_hash_reader :bar
+        attr_hash_writer :buzz
+      end
+    end
+    let(:my_obj) { my_klass.new(foo: 'foo', bar: 'bar', buzz: 'buzz') }
+    subject { my_obj.attributes }
+
+    it { should == {'foo' => 'foo', 'bar' => 'bar'} }
+  end
 end
