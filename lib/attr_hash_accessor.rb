@@ -18,6 +18,13 @@ module AttrHashAccessor
     @attributes = self.class.default.stringify_keys.merge(val.stringify_keys)
   end
 
+  def attributes
+    @attributes.keys.each_with_object({}) do |key, attrs|
+      next unless respond_to?(key)
+      attrs[key] = __send__(key)
+    end
+  end
+
   def persisted?
     false
   end
