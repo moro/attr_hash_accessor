@@ -1,3 +1,7 @@
+## 0.0.3 (Oct 17, 2012)
+
+* add `#attributes`, returns all filtered attributes *takkanm*
+
 ## 0.0.2 (Oct 04, 2012)
 
 * add `attr_hash_accessor`, defines both setter and getter *hibariya*
