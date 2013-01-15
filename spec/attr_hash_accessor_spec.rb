@@ -33,6 +33,14 @@ describe AttrHashAccessor do
 
       its(:bar) { should == 'BARRR' }
     end
+
+    context 'wrong arguments' do
+      specify 'raise ArgumentError unless arg isnot a Hash' do
+        expect {
+          my_klass.new('STRING')
+        }.to raise_error ArgumentError
+      end
+    end
   end
 
   describe 'empty initialize' do

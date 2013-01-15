@@ -8,14 +8,24 @@ require 'active_support/hash_with_indifferent_access'
 module AttrHashAccessor
   include ActiveModel::Conversion
 
+  module Utils
+    extend self
+
+    def normalize_arg(val)
+      return {} unless val.present?
+      raise  ArgumentError, 'argument should be a Hash' unless val.is_a?(Hash)
+
+      val.stringify_keys
+    end
+  end
+
   def self.included(base)
     base.extend ActiveModel::Naming
     base.extend ClassMethods
   end
 
   def initialize(val = nil)
-    val = {} unless val.present?
-    @attributes = self.class.default.stringify_keys.merge(val.stringify_keys)
+    @attributes = self.class.default.stringify_keys.merge(Utils.normalize_arg(val))
   end
 
   def attributes

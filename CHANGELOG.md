@@ -1,3 +1,7 @@
+## Git (Unreleased)
+
+* raise ArgumentError unless constructor argument isn't Hash
+
 ## 0.0.3 (Oct 17, 2012)
 
 * add `#attributes`, returns all filtered attributes *takkanm*
