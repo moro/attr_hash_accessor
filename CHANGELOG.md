@@ -1,6 +1,7 @@
-## Git (Unreleased)
+## 0.0.4 (Jun 26, 2013)
 
 * raise ArgumentError unless constructor argument isn't Hash
+* require all active_model files for support activemodel 4.0.0 *takkanm*
 
 ## 0.0.3 (Oct 17, 2012)
 
