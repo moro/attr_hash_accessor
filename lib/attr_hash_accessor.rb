@@ -1,9 +1,9 @@
 require 'attr_hash_accessor/version'
 
-require 'active_model/naming'
-require 'active_model/conversion'
-require 'active_support/core_ext/object/blank'
+require 'active_model'
 require 'active_support/hash_with_indifferent_access'
+require 'active_support/core_ext/object/blank'
+
 
 module AttrHashAccessor
   include ActiveModel::Conversion
